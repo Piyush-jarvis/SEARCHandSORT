@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int n = nums.size();
+        int right = 0;
+        int left = 0 ;
+        for(int i = 0; i < n; i++)
+        {
+            right += nums[i];
+        }
+        for(int i = 0; i < n; i++)
+        {
+            right -= nums[i];
+            
+            if(left == right)
+            {
+                return i;
+            }
+            
+            left += nums[i];
+        }
+          return -1;
+    }
+};
+
+1 7 3 6 5 6 
+1 + 7 + 3 = 11
+6 + 5 = 11
+SO, INDEX 3 IS LEFT = 6 RETURN I = 3;
