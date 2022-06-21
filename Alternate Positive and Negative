@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+//Rearrange function  
+void Rearrange(int a[], int n)
+{
+    vector<int>pos,neg;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>=0)
+            pos.push_back(a[i]);
+        else
+            neg.push_back(a[i]);
+    }
+    
+    int n1=pos.size();
+    int n2=neg.size();
+    int i=0,j=0,k=0;
+    while(i<n1 || j<n2){
+        if(k%2==0 && i<n1 )//even places
+        {
+            a[k]=pos[i++];
+            k++;
+        }
+        else if(k%2==1 && j<n1 )//odd places
+        {
+            a[k]=neg[j++];
+            k++;
+        }
+    }
+}
+ 
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    Rearrange(a,n);
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    return 0;
+}
