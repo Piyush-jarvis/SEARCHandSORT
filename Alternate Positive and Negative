@@ -28,6 +28,15 @@ void Rearrange(int a[], int n)
             k++;
         }
     }
+    /* alternate part when positive are greater then negative count
+    while(k<n){
+	        if(i<n1) a[k++] = pos[i++];
+	        if(k<n){
+	            if(j<n2) a[k++] = neg[j++];
+	        }
+	    }
+    
+    */
 }
  
 int main()
