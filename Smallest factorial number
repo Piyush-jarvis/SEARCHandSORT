@@ -1,0 +1,57 @@
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+
+class Solution
+{
+    public:
+    
+    bool fact(int mid, int n)
+    {
+        int prod = 5, count = 0;
+        while(prod <= mid)
+        {
+            count+= (mid/prod);
+            prod *= 5;
+        }
+        return count >= n;
+    }
+    
+        int findNum(int n){
+        if(n == 1)
+        {
+            return 5;
+        }
+        int low = 0, high = 5*n;
+        while(low < high)
+        {
+            int mid = low + (high - low)/2;
+            if(fact(mid,n))
+            {
+                high = mid;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        return low;
+        }
+};
+
+// { Driver Code Starts.
+
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--){
+        int n;
+        cin >> n;
+        Solution ob;
+        cout <<ob.findNum(n) << endl;
+    }
+return 0;
+}  // } Driver Code Ends
