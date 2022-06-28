@@ -1,0 +1,59 @@
+// { Driver Code Starts
+// Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+//User function template for C++
+
+class Solution {
+  public:
+    int romanToDecimal(string &str) {
+        // code here
+        map<char, pair<int,int>> mp;
+        mp['I'] = {1,1};
+        mp['V'] = {5,2};
+        mp['X'] = {10,3};
+        mp['L'] = {50,4};
+        mp['C'] = {100,5};
+        mp['D'] = {500,6};
+        mp['M'] = {1000,7};
+        
+        int count = 0;
+        int i;
+        for(i = 0; i < str.length()-1; i++)
+        {
+            char at1 = str[i];
+            char at2 = str[i+1];
+            if(mp[at2].second > mp[at1].second)
+            {
+                count = count + (mp[at2].first - mp[at1].first);
+                i++;
+            }
+            else
+            {
+                count = count + mp[at1].first;
+            }
+        }
+        if(i == str.length() - 1)
+        {
+            count = count + mp[str[i]].first;
+        }
+        return count;
+    }
+};
+
+// { Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        Solution ob;
+        cout << ob.romanToDecimal(s) << endl;
+    }
+}  // } Driver Code Ends
